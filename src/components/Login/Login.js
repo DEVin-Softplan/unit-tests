@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { CardContent, Button } from '@mui/material';
+import { CardContent, Button, Typography } from '@mui/material';
 import { CardStyled, TextFieldStyled } from './Login.styles';
 
 export const Login = ({ onSubmit }) => {
@@ -30,6 +30,7 @@ export const Login = ({ onSubmit }) => {
 
   return (
     <CardStyled variant="outlined">
+      <Typography variant="h4">DevInHouse - Login</Typography>
       <CardContent>
         <form>
           <TextFieldStyled
