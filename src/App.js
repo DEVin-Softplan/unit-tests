@@ -1,15 +1,16 @@
 import { Container } from '@mui/material';
+import { Calculadora } from './components/Calculadora';
 
-import { Login } from './components/Login';
+// import { Login } from './components/Login';
 
 function App() {
-  const onSubmit = ({ values }) => {
-    console.table(values);
-  };
+  // const onSubmit = ({ values }) => {
+  //   console.table(values);
+  // };
 
   return (
     <Container maxWidth="sm">
-      <Login onSubmit={onSubmit} />
+      <Calculadora />
     </Container>
   );
 }
