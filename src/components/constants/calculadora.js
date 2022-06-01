@@ -1,3 +1,5 @@
+export const operacoes = ['*', '/', '+', '-', '.'];
+
 export const listaNumeros = [
   {
     texto: '7',

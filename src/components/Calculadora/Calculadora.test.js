@@ -86,4 +86,31 @@ describe('Calculadora component', () => {
 
     expect(screen.getAllByText('9')).toHaveLength(1);
   });
+
+  it('Não deve calcular quando o valor for vazio', () => {
+    renderComponent();
+
+    const buttonCalcular = screen.getByRole('button', { name: 'Calcular' });
+    userEvent.click(buttonCalcular);
+
+    const button2 = screen.getByRole('button', { name: '2' });
+    userEvent.click(button2);
+
+    expect(screen.getAllByText('2')).toHaveLength(2);
+  });
+
+  it('Não deve aceitar duas operações seguidas', () => {
+    renderComponent();
+
+    const button1 = screen.getByRole('button', { name: '1' });
+    userEvent.click(button1);
+
+    const buttonDiv = screen.getByRole('button', { name: '/' });
+    userEvent.click(buttonDiv);
+
+    const buttonMult = screen.getByRole('button', { name: '*' });
+    userEvent.click(buttonMult);
+
+    expect(screen.getByText('1/')).toBeInTheDocument();
+  });
 });
