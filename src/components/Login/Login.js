@@ -1,31 +1,25 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { CardContent, Button, Typography } from '@mui/material';
-import { CardStyled, TextFieldStyled } from './Login.styles';
+import { CardContent, Typography } from '@mui/material';
 
-export const Login = ({ onSubmit }) => {
-  const [values, setValues] = useState({ user: '', password: '' });
-  const [errors, setErros] = useState({ user: '', password: '' });
+import { useAuth } from '../../context/Auth';
+import { LoginForm } from './components/LoginForm';
+import { CardStyled } from './Login.styles';
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+export const Login = () => {
+  const navigate = useNavigate();
+  const { onLogin } = useAuth();
+  const [errorLogin, setErrorLogin] = useState('');
 
-    setValues((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = () => {
-    setErros({ user: '', password: '' });
-
-    if (!values.user) {
-      return setErros((prev) => ({ ...prev, user: 'Informe o usuário' }));
+  const handleSubmit = async ({ values }) => {
+    const result = await onLogin(values);
+    if (result?.hasError) {
+      return setErrorLogin(result.message);
     }
 
-    if (!values.password) {
-      return setErros((prev) => ({ ...prev, password: 'Informe a senha' }));
-    }
-
-    onSubmit({ values });
+    setErrorLogin('');
+    navigate('/foruns');
   };
 
   return (
@@ -33,35 +27,13 @@ export const Login = ({ onSubmit }) => {
       <Typography variant="h4">DevInHouse - Login</Typography>
 
       <CardContent>
-        <form>
-          <TextFieldStyled
-            fullWidth
-            id="user"
-            name="user"
-            label="Usuário"
-            variant="outlined"
-            value={values.user}
-            onChange={handleChange}
-            error={!!errors.user}
-            helperText={!!errors.user && errors.user}
-          />
+        <LoginForm onSubmit={handleSubmit} />
 
-          <TextFieldStyled
-            fullWidth
-            id="password"
-            name="password"
-            label="Senha"
-            variant="outlined"
-            value={values.password}
-            onChange={handleChange}
-            error={!!errors.password}
-            helperText={!!errors.password && errors.password}
-          />
-
-          <Button fullWidth variant="contained" onClick={handleSubmit}>
-            Acessar
-          </Button>
-        </form>
+        {!!errorLogin && (
+          <Typography variant="subtitle1" color="red">
+            {errorLogin}
+          </Typography>
+        )}
       </CardContent>
     </CardStyled>
   );

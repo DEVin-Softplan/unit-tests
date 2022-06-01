@@ -9,7 +9,8 @@
     "@mui/material": "^5.8.1",
     "mathjs": "^10.6.1",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

@@ -1,16 +1,13 @@
 import { Container } from '@mui/material';
-import { Calculadora } from './components/Calculadora';
-
-// import { Login } from './components/Login';
+import { AuthProvider } from './context/Auth/AuthProvider';
+import { Router } from './Routes/Router';
 
 function App() {
-  // const onSubmit = ({ values }) => {
-  //   console.table(values);
-  // };
-
   return (
     <Container maxWidth="sm">
-      <Calculadora />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
     </Container>
   );
 }

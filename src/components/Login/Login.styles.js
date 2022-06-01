@@ -1,4 +1,4 @@
-import { styled, Card, TextField } from '@mui/material';
+import { styled, Card } from '@mui/material';
 
 export const CardStyled = styled(Card)({
   display: 'flex',
@@ -7,8 +7,4 @@ export const CardStyled = styled(Card)({
   alignItems: 'center',
   marginTop: '40%',
   padding: '20px',
-});
-
-export const TextFieldStyled = styled(TextField)({
-  marginBottom: '20px',
 });

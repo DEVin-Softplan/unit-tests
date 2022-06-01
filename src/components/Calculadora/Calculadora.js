@@ -4,7 +4,7 @@ import * as math from 'mathjs';
 
 import { Grid } from '@mui/material';
 
-import { listaNumeros, operacoes } from '../constants/calculadora';
+import { listaNumeros, operacoes } from '../../constants/calculadora';
 import { ButtonStyled, CardStyled, DisplayStyled } from './Calculadora.styles';
 
 export const Calculadora = () => {
