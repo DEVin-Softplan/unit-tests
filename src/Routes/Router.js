@@ -7,14 +7,7 @@ export const Router = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route
-        path="/calculadora"
-        element={
-          <PrivateRoute>
-            <Calculadora />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/calculadora" element={<Calculadora />} />
       <Route
         path="/foruns"
         element={
