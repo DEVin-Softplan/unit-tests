@@ -34,19 +34,25 @@ export const Calculadora = () => {
 
   return (
     <CardStyled>
-      <DisplayStyled>{displayValue}</DisplayStyled>
+      <DisplayStyled name="display">{displayValue}</DisplayStyled>
 
       <Grid container spacing={0.5}>
         {listaNumeros.map((op) => (
           <Grid key={op.texto} item xs={3}>
-            <ButtonStyled fullWidth variant="contained" color={op.cor} onClick={() => handleClickButton(op.texto)}>
+            <ButtonStyled
+              name={op.texto}
+              fullWidth
+              variant="contained"
+              color={op.cor}
+              onClick={() => handleClickButton(op.texto)}
+            >
               {op.texto}
             </ButtonStyled>
           </Grid>
         ))}
 
         <Grid item xs={12}>
-          <ButtonStyled fullWidth variant="contained" color="primary" onClick={handleClickCalcular}>
+          <ButtonStyled name="calcular" fullWidth variant="contained" color="primary" onClick={handleClickCalcular}>
             Calcular
           </ButtonStyled>
         </Grid>
